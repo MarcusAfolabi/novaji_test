@@ -1,6 +1,6 @@
-# Project Name
+# Novajii Ecommerce App
 
-Project Name is a Laravel application for managing an ecommerce system.
+Novajii is a Laravel application for managing an ecommerce system.
 
 ## Prerequisites
 
@@ -21,12 +21,11 @@ These instructions will guide you on how to get the project up and running on yo
 
 
 ### Install Dependencies
-    - Change the working directory to the project folder:
-     
-    ```bash
-    cd project-name 
-    2. Install PHP dependencies using Composer:
-    ```bash composer install
+    
+- Change the working directory to the project folder:
+``cd project-name``
+Install PHP dependencies using Composer:
+    bash composer install
     3 Copy the ```bash
     .env.example file to ```bash.env 
     </ol>
