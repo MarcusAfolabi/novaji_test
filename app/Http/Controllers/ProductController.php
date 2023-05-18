@@ -7,6 +7,8 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewProductAdded;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -19,7 +21,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('products.index', compact('products'));
+        // return view('products.index', compact('products'));
+        return response()->json($products);
+
     }
 
     public function create()
@@ -49,8 +53,13 @@ class ProductController extends Controller
         }
 
         $product->save();
+        
+        $user = Auth::user();
+        $user->notify(new NewProductAdded($product));
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return response()->json($product, 201);
+
+        // return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -58,7 +67,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return response()->json($product);
+
+        // return view('products.show', compact('product'));
     }
 
     /**
@@ -67,6 +78,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = ProductCategory::select('id', 'name')->get();
+        
         return view('products.edit', compact('product', 'categories'));
     }
 
@@ -94,8 +106,10 @@ class ProductController extends Controller
             $product->image = 'storage/' . $request->file('image')->store('categoryImages', 'public');
         }
         $product->save();
+        return response()->json($product);
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+
+        // return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -104,6 +118,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->back()->with('status', 'Deleted Successfully');
+        return response()->json(null, 204);
+
+        // return redirect()->back()->with('status', 'Deleted Successfully');
     }
 }
