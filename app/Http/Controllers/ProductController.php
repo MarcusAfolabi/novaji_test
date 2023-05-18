@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -20,15 +22,12 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $categories = ProductCategory::select('id', 'name')->get();
         return view('products.create', compact('categories'));
     }
- 
+
     public function store(Request $request)
     {
         $request->validate([
@@ -38,12 +37,16 @@ class ProductController extends Controller
             'product_category_id' => 'required|exists:product_categories,id',
         ]);
 
-        $product = Product::create([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'product_category_id' => $request->input('product_category_id'),
-        ]);
+        $product = new Product();
+        $product->name = $request['name'];
+        $product->description = $request['description'];
+        $product->price = $request['price'];
+        $product->product_category_id = $request['product_category_id'];
+        $product->slug = Str::slug($request['name'], '-');
+
+        if ($request->hasFile('image')) {
+            $product->image = 'storage/' . $request->file('image')->store('productImages', 'public');
+        }
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
@@ -61,8 +64,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
-        
+        $categories = ProductCategory::select('id', 'name')->get();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -77,12 +80,18 @@ class ProductController extends Controller
             'product_category_id' => 'required|exists:product_categories,id',
         ]);
 
-        $product->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'product_category_id' => $request->input('product_category_id'),
-        ]);
+        $product = Product::findOrFail($product->id);
+        $product->name = $request['name'];
+        $product->description = $request['description'];
+        $product->price = $request['price'];
+        $product->product_category_id = $request['product_category_id'];
+        $product->slug = Str::slug($request['name'], '-');
+        
+        if ($request->hasFile('image')) {
+            Storage::delete($product->image);
+            $product->image = 'storage/' . $request->file('image')->store('categoryImages', 'public');
+        }
+        $product->save();
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }

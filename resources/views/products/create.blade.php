@@ -44,15 +44,16 @@
                                                             <label for="image">Image</label>
                                                             <input type="file" class="form-control" id="image" name="image">
                                                         </div>
-                                                </div class="form-group">
-                                                <label for="description">Description</label>
-                                                <textarea class="form-control" rows="4" id="description" name="description" placeholder="Description"></textarea>
+
+                                                        <div class="form-group">
+                                                            <label for="description">Description</label>
+                                                            <textarea class="form-control" rows="4" id="description" name="description" placeholder="Description"></textarea>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <br>
+                                                <br>
                                             </div>
-                                            <br>
-                                            <br>
-                                            <button type="submit" class="btn btn-primary me-2">Save</button>
-                                            <a href="{{ route('products.index') }}"><button class="btn btn-light">Cancel</button></a>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -61,6 +62,5 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        @endsection
+            @endsection
