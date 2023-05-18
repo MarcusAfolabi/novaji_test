@@ -1,36 +1,34 @@
-    <h1>Novajii Ecommerce Test</h1>
-    <p>Project Name is a Laravel application for managing an ecommerce system.</p>
+# Project Name
 
-    <h2>Prerequisites</h2>
-    <ul>
-        <li>PHP (>= 7.4)</li>
-        <li>Composer</li>
-        <li>MySQL</li>
-        <li>Node.js (for asset compilation)</li>
-    </ul>
+Project Name is a Laravel application for managing an ecommerce system.
 
-    <h2>Getting Started</h2>
-    <p>These instructions will guide you on how to get the project up and running on your local machine.</p>
+## Prerequisites
 
-    <h3>Clone the Repository</h3>
-    <ol>
-        <li>Open a terminal or command prompt.</li>
-        <li>Change the current working directory to the location where you want to store the project.</li>
-        <li>Run the following command to clone the repository:</li>
-    </ol>
-    <code>git clone &lt;repository-url&gt;</code>
+- PHP (>= 7.4)
+- Composer
+- MySQL
+- Node.js (for asset compilation)
 
-    <h3>Install Dependencies</h3>
-    <ol>
-        <li>Change the working directory to the project folder:</li>
-    </ol>
-    <code>cd project-name</code>
-    <ol start="2">
-        <li>Install PHP dependencies using Composer:</li>
-    </ol>
-    <code>composer install</code>
-    <ol start="3">
-        <li>Copy the <code>.env.example</code> file to <code>.env</code>:</li>
+## Getting Started
+
+These instructions will guide you on how to get the project up and running on your local machine.
+
+### Clone the Repository
+
+1. Open a terminal or command prompt.
+2. Change the current working directory to the location where you want to store the project.
+3. Run the following command to clone the repository:
+
+
+### Install Dependencies
+    - Change the working directory to the project folder:
+     
+    ```bash
+    cd project-name 
+    2. Install PHP dependencies using Composer:
+    ```bash composer install
+    3 Copy the ```bash
+    .env.example file to ```bash.env 
     </ol>
     <code>cp .env.example .env</code>
     <ol start="4">
