@@ -31,10 +31,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'product_category_id' => 'required|exists:product_categories,id',
+            'name' => 'sometimes|string|max:255',
+            'description' => 'sometimes|string|max:255',
+            'price' => 'sometimes|numeric|min:0',
+            'product_category_id' => 'sometimes|exists:product_categories,id',
         ]);
 
         $product = new Product();
@@ -74,10 +74,10 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'product_category_id' => 'required|exists:product_categories,id',
+            'name' => 'sometimes|string|max:255',
+            'description' => 'sometimes|string|max:255',
+            'price' => 'sometimes|numeric|min:0',
+            'product_category_id' => 'sometimes|exists:product_categories,id',
         ]);
 
         $product = Product::findOrFail($product->id);
