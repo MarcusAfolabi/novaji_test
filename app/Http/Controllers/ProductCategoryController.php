@@ -7,6 +7,10 @@ use App\Models\ProductCategory;
 
 class ProductCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(){
         $categories = ProductCategory::all();
@@ -34,7 +38,7 @@ class ProductCategoryController extends Controller
     }
 
     public function edit(ProductCategory $productCategory){
-        return view('product_categories.create', compact('productCategory'));
+        return view('product_categories.edit', compact('productCategory'));
     }
 
     public function update(Request $request, ProductCategory $productCategory)

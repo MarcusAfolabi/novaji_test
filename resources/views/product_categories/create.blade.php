@@ -32,7 +32,7 @@
                                                 <br>
                                                 <br>
                                                 <button type="submit" class="btn btn-primary me-2">Save</button>
-                                                <button class="btn btn-light">Cancel</button>
+                                                <a href="{{ route('product_categories.index') }}"><button class="btn btn-light">Cancel</button></a>
                                                 </form>
                                             </div>
                                         </div>

@@ -9,140 +9,50 @@
 
                     <div class="tab-content tab-content-basic">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                            <x-status-bar :bar />
 
-                            <div class="row">
-                                <div class="col-lg-12 d-flex flex-column">
-
-                                    <div class="row flex-grow">
-                                        <div class="col-12 grid-margin stretch-card">
-                                            <div class="card card-rounded">
+                            <div class="main-panel">
+                                <div class="content-wrapper">
+                                    <div class="row">
+                                        <div class="col-md-12 grid-margin stretch-card">
+                                            <div class="card">
                                                 <div class="card-body">
-                                                    <div class="d-sm-flex justify-content-between align-items-start">
-                                                        <div>
-                                                            <h4 class="card-title card-title-dash">Total Products</h4>
+                                                    <h4 class="card-title">Product </h4>
+                                                    <p class="card-description">
+                                                        You can add the product from here
+                                                    </p>
+                                                    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="forms-sample">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <label for="name">Title</label>
+                                                            <input type="text" class="form-control" id="name" name="name" placeholder="Category name">
                                                         </div>
-                                                        <div>
-                                                            <a href="{{ route('products.create') }}"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button">New product</button></a>
+                                                        <div class="form-group">
+                                                            <label for="name">Price</label>
+                                                            <input type="number" class="form-control" id="name" name="price" placeholder="Category name">
                                                         </div>
-                                                    </div>
-                                                    <div class="table-responsive  mt-1">
-                                                        <table class="table select-table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>S/N</th>
-                                                                    <th>Product</th>
-                                                                    <th>Price</th>
-                                                                    <th>Quantity</th>
-                                                                    <th>View</th>
-                                                                    <th>Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        1
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="d-flex ">
-                                                                            <img src="images/faces/face1.jpg" alt="">
-                                                                            <div>
-                                                                                <h6>Brandon Washington</h6>
-                                                                                <p>Head admin</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <h6>Company name 1</h6>
-                                                                        <p>company type</p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p class="text-success">79%</p>
-                                                                                <p>85/162</p>
-                                                                            </div>
-                                                                            <div class="progress progress-md">
-                                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="badge badge-opacity-warning">In progress</div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="name">Category</label>
+                                                            <select class="form-control" id="product_category_id" name="product_category_id">
+                                                                @forelse($categories as $category)
+                                                                <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                                                @empty
+                                                                Nothing
+                                                                @endforelse
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="image">Image</label>
+                                                            <input type="file" class="form-control" id="image" name="image">
+                                                        </div>
+                                                </div class="form-group">
+                                                <label for="description">Description</label>
+                                                <textarea class="form-control" rows="4" id="description" name="description" placeholder="Description"></textarea>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 d-flex flex-column">
-
-                                    <div class="row flex-grow">
-                                        <div class="col-12 grid-margin stretch-card">
-                                            <div class="card card-rounded">
-                                                <div class="card-body">
-                                                    <div class="d-sm-flex justify-content-between align-items-start">
-                                                        <div>
-                                                            <h4 class="card-title card-title-dash">Total Products Categories</h4>
-                                                        </div>
-                                                        <div>
-                                                            <a href="{{ route('product_categories.create') }}"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button">New Category</button></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-responsive  mt-1">
-                                                        <table class="table select-table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>S/N</th>
-                                                                    <th>Product</th>
-                                                                    <th>Price</th>
-                                                                    <th>Quantity</th>
-                                                                    <th>View</th>
-                                                                    <th>Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        1
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="d-flex ">
-                                                                            <img src="images/faces/face1.jpg" alt="">
-                                                                            <div>
-                                                                                <h6>Brandon Washington</h6>
-                                                                                <p>Head admin</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <h6>Company name 1</h6>
-                                                                        <p>company type</p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p class="text-success">79%</p>
-                                                                                <p>85/162</p>
-                                                                            </div>
-                                                                            <div class="progress progress-md">
-                                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="badge badge-opacity-warning">In progress</div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <br>
+                                            <br>
+                                            <button type="submit" class="btn btn-primary me-2">Save</button>
+                                            <a href="{{ route('products.index') }}"><button class="btn btn-light">Cancel</button></a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -152,6 +62,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-@endsection
+
+        @endsection
