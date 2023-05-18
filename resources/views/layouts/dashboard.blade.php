@@ -99,12 +99,15 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="">All product</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="">Add Product</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="">Product Category</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('products.index') }}">All product</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('products.create') }}">Add Product</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('product_categories.index') }}">All Categories</a></li> 
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('product_categories.create') }}">Product Category</a></li>
+
                             </ul>
                         </div>
-
+                    </li>
+                 
                 </ul>
             </nav>
             @yield('dashboard')
