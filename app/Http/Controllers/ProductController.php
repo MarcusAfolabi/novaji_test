@@ -12,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -20,15 +21,26 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'product_category_id' => 'required|exists:product_categories,id',
+        ]);
+
+        $product = Product::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'product_category_id' => $request->input('product_category_id'),
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -36,7 +48,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('product.show', compact('product'));
     }
 
     /**
@@ -44,7 +56,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.edit', compact('product'));
+        
     }
 
     /**
@@ -52,7 +65,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'product_category_id' => 'required|exists:product_categories,id',
+        ]);
+
+        $product->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'product_category_id' => $request->input('product_category_id'),
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -60,6 +87,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product();
+        return redirect()->back()->with('status', 'Deleted Successfully');
     }
 }
