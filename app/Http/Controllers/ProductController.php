@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ProductCategory;
 
 class ProductController extends Controller
 {
@@ -11,7 +13,7 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $products = Product::all();
@@ -23,7 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = ProductCategory::select('id', 'name')->get();
+        return view('products.create', compact('categories'));
     }
  
     public function store(Request $request)
