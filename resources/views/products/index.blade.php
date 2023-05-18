@@ -18,6 +18,11 @@
                                                 <div class="card-body">
                                                     <div class="d-sm-flex justify-content-between align-items-start">
                                                         <div>
+                                                            @if (session('status'))
+                                                            <div class="mb-4 font-medium text-sm text-green-600">
+                                                                {{ session('status') }}
+                                                            </div>
+                                                            @endif
                                                             <h4 class="card-title card-title-dash">All Products</h4>
                                                         </div>
                                                         <div>
@@ -33,7 +38,7 @@
                                                                     <th>Image</th>
                                                                     <th>Category</th>
                                                                     <th>Price</th>
-                                                                    <th>Description</th> 
+                                                                    <th>Description</th>
                                                                     <th>Edit</th>
                                                                     <th>Delete</th>
                                                                 </tr>
@@ -45,10 +50,13 @@
                                                                         {{ $product->id }}
                                                                     </td>
                                                                     <td>
+                                                                        {{ $product->name }}
+                                                                    </td>
+                                                                    <td>
                                                                         <img src="{{ asset($product->image)  }}" />
                                                                     </td>
                                                                     <td>
-                                                                        {{ $product->product_category_id }}
+                                                                        {{ $product->category->name }}
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex ">

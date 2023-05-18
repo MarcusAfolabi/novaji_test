@@ -15,26 +15,28 @@
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
+
                                                 <div class="card-body">
+                                                    <x-validation-errors class="mb-4" />                                                     
                                                     <h4 class="card-title">Product </h4>
                                                     <p class="card-description">
-                                                        You can add the product from here
+                                                        You can add more product from here
                                                     </p>
                                                     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="forms-sample">
                                                         @csrf
                                                         <div class="form-group">
                                                             <label for="name">Title</label>
-                                                            <input type="text" class="form-control" id="name" name="name" placeholder="Category name">
+                                                            <input type="text" class="form-control" id="name" name="name" placeholder="Product name">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="name">Price</label>
-                                                            <input type="number" class="form-control" id="name" name="price" placeholder="Category name">
+                                                            <input type="number" class="form-control" id="name" name="price" placeholder="Price">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="name">Category</label>
                                                             <select class="form-control" id="product_category_id" name="product_category_id">
                                                                 @forelse($categories as $category)
-                                                                <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                                 @empty
                                                                 Nothing
                                                                 @endforelse
@@ -42,13 +44,15 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="image">Image</label>
-                                                            <input type="file" class="form-control" id="image" name="image">
+                                                            <input type="file" class="form-control" required id="image" name="image">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="description">Description</label>
                                                             <textarea class="form-control" rows="4" id="description" name="description" placeholder="Description"></textarea>
                                                         </div>
+                                                        <button type="submit" class="btn btn-danger me-2">Save</button>
+                                                        <a href="{{ route('products.index') }}"><button class="btn btn-light me-2">Cancel</button></a>
                                                     </form>
                                                 </div>
                                                 <br>

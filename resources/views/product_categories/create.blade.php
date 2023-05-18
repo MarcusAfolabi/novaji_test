@@ -16,6 +16,7 @@
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
                                                 <div class="card-body">
+                                                <x-validation-errors class="mb-4" />                                                     
                                                     <h4 class="card-title">Product Category</h4>
                                                     <p class="card-description">
                                                         You can add the product categories from here

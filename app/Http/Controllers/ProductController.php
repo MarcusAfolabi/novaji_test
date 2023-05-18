@@ -48,6 +48,8 @@ class ProductController extends Controller
             $product->image = 'storage/' . $request->file('image')->store('productImages', 'public');
         }
 
+        $product->save();
+
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
@@ -101,7 +103,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product();
+        $product->delete();
         return redirect()->back()->with('status', 'Deleted Successfully');
     }
 }

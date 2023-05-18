@@ -43,6 +43,7 @@
                         <h3 class="welcome-sub-text">Your performance summary this week </h3>
                     </li>
                 </ul>
+                
                 <ul class="navbar-nav ms-auto">
 
 
@@ -101,36 +102,37 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('products.index') }}">All product</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('products.create') }}">Add Product</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('product_categories.index') }}">All Categories</a></li> 
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('product_categories.index') }}">All Categories</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('product_categories.create') }}">Product Category</a></li>
 
                             </ul>
                         </div>
                     </li>
-                 
+
                 </ul>
             </nav>
+            
             @yield('dashboard')
 
             <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"> <a href="https://www.webshoptechnology.com/" target="_blank">Made with Love</a> from Afolabi Marcus.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2023. All rights reserved.</span>
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"> <a href="https://www.webshoptechnology.com/" target="_blank">Made with Love</a> from Afolabi Marcus.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2023. All rights reserved.</span>
+                </div>
+            </footer>
         </div>
-    </footer>
-</div>
-    <script src="{{ asset('back/vendors/js/vendor.bundle.base.js') }}"></script>
-    <script src="{{ asset('back/vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/progressbar.js/progressbar.min.js') }}"></script>
-    <script src="{{ asset('back/js/off-canvas.js') }}"></script>
-    <script src="{{ asset('back/js/hoverable-collapse.js') }}"></script>
-    <script src="{{ asset('back/js/template.js') }}"></script>
-    <script src="{{ asset('back/js/settings.js') }}"></script>
-    <script src="{{ asset('back/js/todolist.js') }}"></script>
-    <script src="{{ asset('back/js/jquery.cookie.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('back/js/dashboard.js') }}"></script>
-    <script src="{{ asset('back/js/Chart.roundedBarCharts.js') }}"></script>
+        <script src="{{ asset('back/vendors/js/vendor.bundle.base.js') }}"></script>
+        <script src="{{ asset('back/vendors/chart.js/Chart.min.js') }}"></script>
+        <script src="{{ asset('back/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('back/vendors/progressbar.js/progressbar.min.js') }}"></script>
+        <script src="{{ asset('back/js/off-canvas.js') }}"></script>
+        <script src="{{ asset('back/js/hoverable-collapse.js') }}"></script>
+        <script src="{{ asset('back/js/template.js') }}"></script>
+        <script src="{{ asset('back/js/settings.js') }}"></script>
+        <script src="{{ asset('back/js/todolist.js') }}"></script>
+        <script src="{{ asset('back/js/jquery.cookie.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('back/js/dashboard.js') }}"></script>
+        <script src="{{ asset('back/js/Chart.roundedBarCharts.js') }}"></script>
 </body>
 
 </html>
